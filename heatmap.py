@@ -21,11 +21,13 @@ key = "fd10716c"  # omdb key
 
 def create_heatmap(question, hm_click):
     d = get_series_data(question, key)
-    print(d)
     values = pd.DataFrame([[float(episode['imdbRating']) for episode in season if (
         episode != None and episode['imdbRating'] != "N/A")] for season in d]).fillna(0).transpose()[::-1]
-    nr_seasons = len(d)
-    nr_episodes = len(max(d, key=len))
+    nr_seasons = len(values.columns)
+    # nr_episodes = len(max(d, key=len))
+    nr_episodes = len(values)
+
+
     x_axis = [x+1 for x in range(nr_seasons)]
     y_axis = [y+1 for y in range(nr_episodes)]
     y_axis = y_axis[::-1]
@@ -63,6 +65,8 @@ def create_heatmap(question, hm_click):
     )
 
     fig.update_layout(title_text=f'{question} IMDB RATINGS',
+                    height = nr_episodes * 40,
+                    width = nr_seasons * 60,
                     yaxis = {
                            "autorange": "reversed",
                            "fixedrange": True
