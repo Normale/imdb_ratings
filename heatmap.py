@@ -25,7 +25,7 @@ def create_heatmap(question, hm_click):
         episode != None and episode['imdbRating'] != "N/A")] for season in d]).fillna(0).transpose()[::-1]
     nr_seasons = len(values.columns)
     # nr_episodes = len(max(d, key=len))
-    nr_episodes = len(values)
+    nr_episodes = len(values)   
 
 
     x_axis = list(range(1, nr_seasons + 1))
@@ -38,7 +38,7 @@ def create_heatmap(question, hm_click):
         for j in range(nr_seasons):
             try:
                 row.append(
-                    f"<br>{d[j][i]['Title']}</br><br>{d[j][i]['Released']}</br>")
+                    f"<b>{d[j][i]['Title']}</b><br>Season: {j+1} Episode: {i+1}</br><br>{d[j][i]['Released']} </br>")
             except IndexError:
                 row.append("")
         hover.append(row)
