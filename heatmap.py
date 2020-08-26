@@ -28,8 +28,8 @@ def create_heatmap(question, hm_click):
     nr_episodes = len(values)
 
 
-    x_axis = [x+1 for x in range(nr_seasons)]
-    y_axis = [y+1 for y in range(nr_episodes)]
+    x_axis = list(range(1, nr_seasons + 1))
+    y_axis = list(range(1, nr_episodes + 1))
     y_axis = y_axis[::-1]
     hover = []
 
@@ -65,8 +65,8 @@ def create_heatmap(question, hm_click):
     )
 
     fig.update_layout(title_text=f'{question} IMDB RATINGS',
-                    height = nr_episodes * 40,
-                    width = nr_seasons * 60,
+                    height = 400  + nr_episodes * 25,
+                    width = 200 + nr_seasons * 40,
                     yaxis = {
                            "autorange": "reversed",
                            "fixedrange": True
