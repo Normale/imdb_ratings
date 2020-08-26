@@ -38,7 +38,7 @@ def generate_control_card():
             html.P("Put Title in"),
             dcc.Input(
                 id="title-input",
-                value="breaking bad"
+                value="chernobyl"
             ),
             html.Br(),
             html.Div(
@@ -149,9 +149,9 @@ app.layout = html.Div(
             children=[
                 # Patient Volume Heatmap
                 html.Div(
-                    id="patient_volume_card",
+                    id="imdb_ratings_card",
                     children=[
-                        html.B("Patient Volume"),
+                        html.B(""),
                         html.Hr(),
                         dcc.Graph(id="patient_volume_hm"),
                     ]
