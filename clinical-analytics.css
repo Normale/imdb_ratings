@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: Acumin;
     font-weight: bold;
     src: url("Acumin-BdPro.otf") format("opentype");
@@ -85,14 +85,14 @@ H5, H3 {
     font-weight: bold;
 }
 
-#patient_volume_card, #wait_time_card {
+#imdb_ratings_card, #wait_time_card {
     background-color: #FFFFFF;
     padding: 1rem;
     margin: auto;
     margin-top: 20px;
 }
 
-#patient_volume_card > b, #wait_time_card > b {
+#imdb_ratings_card > b, #wait_time_card > b {
     line-height: 2.5;
 }
 
@@ -126,7 +126,7 @@ H5, H3 {
 /*
   ##Device = Most of the Smartphones Mobiles / ipad (Portrait)
   */
-
+/*
 @media only screen and (max-width: 750px), screen and (min-width: 768px) and (max-width: 1024px) {
 
     body {
@@ -183,7 +183,7 @@ H5, H3 {
         clear: both;
     }
 
-    #patient_volume_card > b, #wait_time_card > b {
+    #imdb_ratings_card > b, #wait_time_card > b {
         line-height: 2.5;
         font-size: 13px;
         display: block;
@@ -194,4 +194,4 @@ H5, H3 {
         font-size: 0.8rem !important;
     }
 
-}
+} */
