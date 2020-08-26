@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
-from imdb_api import get_series_data
+from get_data import get_series_data
 import pandas as pd
 
 BACKGROUND = "black"
