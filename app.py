@@ -14,13 +14,14 @@ from heatmap import create_heatmap
 
 from imdb_api import get_series_data
 
+server = flask.Flask(__name__)
 app = dash.Dash(
     __name__,
+    server=server,
     meta_tags=[{"name": "viewport",
                 "content": "width=device-width, initial-scale=1"}],
 )
 
-server = app.server
 app.config.suppress_callback_exceptions = True
 
 BACKGROUND = "black"
@@ -115,4 +116,4 @@ app.clientside_callback(
 
 # Run the server
 if __name__ == "__main__":
-    app.run_server(debug = True)
+    app.server.run(debug=True)
