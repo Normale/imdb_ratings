@@ -8,12 +8,12 @@ import pandas as pd
 
 
 BACKGROUND = "white"
-# COLORS = px.colors.diverging.RdYlGn
-# COLORS[0] = "rgb(0,0,0)"#"rgb(255,255,255)" #white for empty cells, to make then invisible
-#['rgb(165,0,38)', 'rgb(215,48,39)', 'rgb(244,109,67)', 'rgb(253,174,97)', 'rgb(254,224,139)', 'rgb(255,255,191)', 'rgb(217,239,139)', 'rgb(166,217,106)', 'rgb(102,189,99)', 'rgb(26,152,80)', 'rgb(0,104,55)']
+COLORS = px.colors.diverging.RdYlGn
+COLORS.insert(0, BACKGROUND)
+# COLORS = ['rgb(165,0,38)', 'rgb(215,48,39)', 'rgb(244,109,67)', 'rgb(253,174,97)', 'rgb(254,224,139)', 'rgb(255,255,191)', 'rgb(217,239,139)', 'rgb(166,217,106)', 'rgb(102,189,99)', 'rgb(26,152,80)', 'rgb(0,104,55)']
 # Aggresive colors:
-COLORS = [BACKGROUND] + ['rgb(165,0,38)'] + 3 * ['rgb(215,48,39)'] + ['rgb(244,109,67)',
-                                                                      'rgb(253,174,97)', 'rgb(254,224,139)', 'rgb(102,189,99)', 'rgb(26,152,80)', 'rgb(0,104,55)']
+# COLORS = [BACKGROUND] + ['rgb(165,0,38)'] + 3 * ['rgb(215,48,39)'] + ['rgb(244,109,67)',
+                                                                    #   'rgb(253,174,97)', 'rgb(254,224,139)', 'rgb(102,189,99)', 'rgb(26,152,80)', 'rgb(0,104,55)']
 LINE_COLORS = [BACKGROUND] + 10 * ["rgb(200,212,227)"]
 
 
@@ -61,6 +61,8 @@ def create_heatmap(question, hm_click):
                         colorscale=COLORS, 
                         font_colors=['black'],
                         hoverinfo='text',
+                        zmin = 4.3,
+                        zmax = 10.0
                         
     )
 

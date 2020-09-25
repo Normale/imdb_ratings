@@ -25,10 +25,6 @@ app = dash.Dash(
 
 app.config.suppress_callback_exceptions = True
 
-BACKGROUND = "black"
-COLORS = [BACKGROUND] +['rgb(165,0,38)'] + 3 * ['rgb(215,48,39)'] + ['rgb(244,109,67)', 'rgb(253,174,97)','rgb(254,224,139)', 'rgb(102,189,99)', 'rgb(26,152,80)', 'rgb(0,104,55)']
-KEY = "fd10716c"
-
 
 def generate_control_card():
     """
