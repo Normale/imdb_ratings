@@ -61,7 +61,7 @@ def create_heatmap(question, hm_click):
                         colorscale=COLORS, 
                         font_colors=['black'],
                         hoverinfo='text',
-                        zmin = 4.3,
+                        zmin = 1.0,
                         zmax = 10.0
                         
     )
