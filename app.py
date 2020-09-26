@@ -42,10 +42,6 @@ def generate_control_card():
                 debounce=True
             ),
             html.Br(),
-            html.Div(
-                id="reset-btn-outer",
-                children=html.Button(id="reset-btn", children="Reset", n_clicks=0),
-            ),
         ],
     )
 
@@ -92,24 +88,11 @@ app.layout = html.Div(
     ],
 )
 def update_heatmap(title, hm_click):
-    reset = False
-    # Find which one has been triggered
-    ctx=dash.callback_context
-    
-    if ctx.triggered:
-        prop_id=ctx.triggered[0]["prop_id"].split(".")[0]
-        if prop_id == "reset-btn":
-            reset=True
 
-    # Return to original hm(no colored annotation) by resetting
-    # return generate_patient_volume_heatmap(title, hm_click, reset)
+    #optional space for creating e.g. RESET button
+
+
     return create_heatmap(title, hm_click)
-'''
-app.clientside_callback(
-    ClientsideFunction(namespace="clientside", function_name="resize"),
-    Output("output-clientside", "children"),
-    [Input("wait_time_table", "children")] + wait_time_inputs + score_inputs,
-)'''
 
 # Run the server
 if __name__ == "__main__":
