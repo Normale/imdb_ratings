@@ -10,20 +10,27 @@ def get_json(**kwargs) -> dict:
     return parsed
 
 
+def exception_returns_none(func):
+    def wrapper(*args, **kwargs):
+        try:
+          return func(*args, **kwargs)
+        except:
+          return None
+    return wrapper
+
+@exception_returns_none
 def search_title(title: str, key: str) -> Tuple[str, int]:
     parsed = get_json(params={
         't': f"{title}",
         'ApiKey': key
     })
-    try:
-        id: str = parsed["imdbID"]
-        no_seasons: int = int(parsed["totalSeasons"])
-    except:
-        print("spadłem z rowerka")
-        print(parsed)
+    id: str = parsed["imdbID"]
+    no_seasons: int = int(parsed["totalSeasons"])
+    
     return id, no_seasons
 
 
+@exception_returns_none
 def get_episodes_data(id: str, no_seasons: int, key: str=DEFAULTKEY):
     data = []
     for season_nr in range(1, no_seasons + 1):
@@ -36,20 +43,13 @@ def get_episodes_data(id: str, no_seasons: int, key: str=DEFAULTKEY):
     return data
 
 
+@exception_returns_none
 def get_series_data(title: str, api_key: str=DEFAULTKEY) -> List[List[dict]]:
-    try:
-        id, no_seasons = search_title(title, api_key)
-        print(id, no_seasons)
-    except:
-        print("Not Found")
-        return None
-    try:
-        result = get_episodes_data(id, no_seasons, api_key)
-    except:
-        print("Internal server error")
-        return None
-    return result
+    id, no_seasons = search_title(title, api_key)
+    print(title, id, no_seasons)
 
+    result = get_episodes_data(id, no_seasons, api_key)
+    return result
 
 
 if __name__ == "__main__":
@@ -58,4 +58,4 @@ if __name__ == "__main__":
     question = "Friends"
     id, no_seasons = search_title(question,key)
     data = get_episodes_data(id, no_seasons, key)
-    print(data)
+    # print(data)
