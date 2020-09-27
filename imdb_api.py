@@ -4,14 +4,14 @@ import json
 
 DEFAULTKEY = "fd10716c"
 
-def get_json(*args, **kwargs):
-    response = get(*args, **kwargs)
+def get_json(**kwargs) -> dict:
+    response = get('http://www.omdbapi.com/', **kwargs)
     parsed = json.loads(response.text)
     return parsed
 
 
 def search_title(title: str, key: str) -> Tuple[str, int]:
-    parsed = get_json('http://www.omdbapi.com/', params={
+    parsed = get_json(params={
         't': f"{title}",
         'ApiKey': key
     })
@@ -27,7 +27,7 @@ def search_title(title: str, key: str) -> Tuple[str, int]:
 def get_episodes_data(id: str, no_seasons: int, key: str=DEFAULTKEY):
     data = []
     for season_nr in range(1, no_seasons + 1):
-        parsed = get_json('http://www.omdbapi.com/', params={
+        parsed = get_json(params={
                 'i': id,
                 'Season': season_nr,
                 'ApiKey': key
