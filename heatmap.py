@@ -3,8 +3,10 @@ import plotly.graph_objects as go
 import plotly.express as px
 import plotly.figure_factory as ff
 import numpy as np
-from imdb_api import get_series_data
 import pandas as pd
+from functools import lru_cache
+
+from imdb_api import get_series_data
 
 
 BACKGROUND = "white"
@@ -19,6 +21,8 @@ LINE_COLORS = [BACKGROUND] + 10 * ["rgb(200,212,227)"]
 
 key = "fd10716c"  # omdb key
 
+
+@lru_cache
 def create_heatmap(question, hm_click):
     d = get_series_data(question, key)
     values = pd.DataFrame([[float(episode['imdbRating']) for episode in season if (
