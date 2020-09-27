@@ -19,12 +19,11 @@ COLORS.insert(0, BACKGROUND)
 LINE_COLORS = [BACKGROUND] + 10 * ["rgb(200,212,227)"]
 
 
-key = "fd10716c"  # omdb key
 
 
 @lru_cache
 def create_heatmap(question, hm_click):
-    d = get_series_data(question, key)
+    d = get_series_data(question)
     values = pd.DataFrame([[float(episode['imdbRating']) for episode in season if (
         episode != None and episode['imdbRating'] != "N/A")] for season in d]).fillna(0).transpose()[::-1]
     nr_seasons = len(values.columns)
